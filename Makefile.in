@@ -1,0 +1,37 @@
+SRCS=$(wildcard src/*.c)
+OBJS=$(SRCS:src/%.c=obj/%.o)
+
+CCFLAGS ?= -std=c99 -O3 -fPIC -Wall -Iinclude/
+LDFLAGS ?= -shared -fPIC
+
+EXECUTABLE = libzpu.so
+
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+
+all: prepare depends release
+
+obj/%.o: src/%.c
+	$(CC) $(CCFLAGS) -o $@ -c $<
+	
+depends:
+	$(MAKE) -C libcintelhex all
+
+clean:
+	rm -rf obj bin
+
+release: $(OBJS)
+	$(CC) $(LDFLAGS) -o bin/$(EXECUTABLE) $(OBJS)
+
+prepare:
+	@MKDIR_P@ bin
+	@MKDIR_P@ obj
+
+install: all
+	@INSTALL@ -C bin/*.so -t @libdir@/
+	@INSTALL@ -C include/*.h -t @includedir@/
+
+test: all
+	$(MAKE) -C tests clean all
+	cd tests
+	tests/test
