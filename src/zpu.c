@@ -1,3 +1,4 @@
+#include "config.h"
 #include "zpu.h"
 #include "cintelhex.h"
 
