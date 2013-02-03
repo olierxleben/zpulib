@@ -1,0 +1,28 @@
+#                                               -*- Autoconf -*-
+# Process this file with autoconf to produce a configure script.
+
+AC_PREREQ([2.67])
+AC_INIT([libpyzpu], [1.0], [oliver.erxleben@hs-osnabrueck.de])
+AC_CONFIG_SRCDIR([src/libpyzpu.c])
+AC_CONFIG_HEADERS([config.h])
+
+AC_PREFIX_DEFAULT([/usr/])
+
+# Checks for programs.
+AC_PROG_CC
+AC_PATH_PROGS([PYTHON], [python python2.6], [AC_MSG_ERROR([Could not find python.])])
+
+# Checks for libraries.
+AC_CHECK_LIB([zpu],[zpu_load_from_file],[],[AC_MSG_ERROR([Could not find zpu library.])])
+
+# Checks for header files.
+AC_CHECK_HEADERS([python2.6/Python.h],[],[AC_MSG_ERROR([Could not find Python.h])])
+AC_CHECK_HEADERS([zpu.h],[],[AC_MSG_ERROR([Could not find zpu.h])])
+
+# Checks for typedefs, structures, and compiler characteristics.
+
+# Checks for library functions.
+
+AC_CONFIG_FILES([Makefile])
+
+AC_OUTPUT
