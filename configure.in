@@ -5,6 +5,8 @@ AC_PREREQ([2.67])
 AC_INIT([libzpu], [1.0], [oliver.erxleben@hs-osnabrueck.de])
 AC_CONFIG_SRCDIR([src/zpu.c])
 
+AC_PREFIX_DEFAULT([/usr/])
+
 # Checks for programs.
 AC_PROG_CC
 AC_PROG_INSTALL
