@@ -10,7 +10,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-#define DEBUG
+#define DEBUG_OFF
 
 #ifdef DEBUG
 # define OUT_DBG(msg, ...) printf(msg, ##__VA_ARGS__)
@@ -73,8 +73,6 @@ zpu_error_t zpu_load_from_file(char* filename)
 			"Could not copy program into RAM: %s", ihex_error());
 		goto memcopy_failed;
 	}
-	
-	printf("0x0400: 0x%02x\n", addr[0x400]);
 	
 	#ifndef ZPU_MOCK
 	munmap(addr, ZPU_RAM_SIZE);
