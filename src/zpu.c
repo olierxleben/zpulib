@@ -29,10 +29,6 @@
 #define ZPU_SET_ERROR_RETURN(errno, error, ...) \
 	ZPU_SET_ERROR(errno, error, ##__VA_ARGS__); \
 	return errno;
-	
-#define ZPU_OPEN_RW(fd) (fd = open(ZPU_DEV_FILENAME, O_RDWR,   S_IWUSR|S_IRUSR))
-#define ZPU_OPEN_R(fd)  (fd = open(ZPU_DEV_FILENAME, O_RDONLY, S_IRUSR))
-#define ZPU_OPEN_W(fd)  (fd = open(ZPU_DEV_FILENAME, O_WRONLY, S_IWUSR))
 
 #define ZPU_OPEN_RETURN(fd) if (ZPU_OPEN_RW(fd) <= 0) { \
 	ZPU_SET_ERROR_RETURN(ZPU_ERR_DEVFILEOPEN, \

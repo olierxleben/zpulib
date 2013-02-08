@@ -2,6 +2,10 @@
 #define ZPU_H
 
 #include <stdlib.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <sys/stat.h>
+
 #include "zpu_commands.h"
 
 // CONSTANT DEFINITIONS
@@ -16,6 +20,10 @@
 
 #define ZPU_DEV_FILENAME "/dev/zpu"
 #define ZPU_RAM_SIZE     8192
+	
+#define ZPU_OPEN_RW(fd) (fd = open(ZPU_DEV_FILENAME, O_RDWR,   S_IWUSR|S_IRUSR))
+#define ZPU_OPEN_R(fd)  (fd = open(ZPU_DEV_FILENAME, O_RDONLY, S_IRUSR))
+#define ZPU_OPEN_W(fd)  (fd = open(ZPU_DEV_FILENAME, O_WRONLY, S_IWUSR))
 
 // TYPE DEFINITIONS
 
