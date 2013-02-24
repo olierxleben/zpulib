@@ -67,7 +67,7 @@ zpu_error_t zpu_load_from_file(char* filename)
 	}
 	#endif
 	
-	if (ihex_mem_copy(rs, addr, ZPU_RAM_SIZE) != 0)
+	if (ihex_mem_copy(rs, addr, ZPU_RAM_SIZE, IHEX_WIDTH_32BIT, IHEX_ORDER_BIGENDIAN) != 0)
 	{
 		ZPU_SET_ERROR((ZPU_ERR_MEMCOPY << 16) + ihex_errno(),
 			"Could not copy program into RAM: %s", ihex_error());
