@@ -1,4 +1,3 @@
-
 #include <asm/ioctl.h>
 
 #define RAGGED_MAGIC 'z'

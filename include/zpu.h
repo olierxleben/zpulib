@@ -19,7 +19,7 @@
 #define ZPU_ERR_COULDNOTSTART 0x06
 
 #define ZPU_DEV_FILENAME "/dev/zpu"
-#define ZPU_RAM_SIZE     8192
+#define ZPU_RAM_SIZE     8192 // bytes
 	
 #define ZPU_OPEN_RW(fd) (fd = open(ZPU_DEV_FILENAME, O_RDWR,   S_IWUSR|S_IRUSR))
 #define ZPU_OPEN_R(fd)  (fd = open(ZPU_DEV_FILENAME, O_RDONLY, S_IRUSR))
