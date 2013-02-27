@@ -25,3 +25,9 @@ Building from Sources
     ./configure
     make
     make install
+		
+Links
+=====
+
+https://github.com/martin-helmich/libcintelhex
+
